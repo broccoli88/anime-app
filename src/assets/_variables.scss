@@ -1,0 +1,105 @@
+@use "sass:math";
+
+$color-primary: hsl(178, 93%, 29%);
+$color-primary-light: hsl(171, 78%, 69%);
+$color-secondary-darker: hsl(281, 78%, 23%);
+$color-secondary: hsl(280, 55%, 44%);
+$color-secondary-lighter: hsl(266, 79%, 81%);
+
+// Font
+$base-font: hsl(0, 0%, 90%);
+$base-font-transparent: hsl(0, 0%, 90%, 0.6);
+
+$alt-font: hsl(0, 0%, 10%);
+$alt-font-transparent: hsl(0, 0%, 10%, 0.6);
+
+$base-font-family: "Changa", sans-serif;
+
+// Background
+
+$base-bg: hsl(0, 0%, 12%);
+$base-bg-light: hsl(0, 0%, 15%);
+
+$alt-bg: hsl(0, 0%, 100%);
+$alt-bg-darker: hsl(0, 0%, 94%);
+
+// Other
+
+//  --Padding
+
+$padding-sm: 1rem;
+$padding-md: 2rem;
+$padding-lg: 3rem;
+
+//  --Margin
+
+$margin-auto: auto;
+$margin-sm: 1rem;
+$margin-md: 2rem;
+$margin-lg: 3rem;
+
+//  --Box-shadow
+
+$box-shadow-15: 0 0 15px 1px hsl(0, 0%, 100%, 0.1);
+$box-shadow-10: 0 0 10px 1px hsl(0, 0%, 100%, 0.1);
+$box-shadow-5: 0 0 5px 1px hsl(0, 0%, 100%, 0.1);
+
+//  --Border
+
+$border-radius-sm: 10px;
+$border-radius-md: 20px;
+$border-radius-lg: 30px;
+
+//  --Outline
+
+$base-outline: 1px solid $color-secondary;
+
+// Mixins
+
+@mixin flex-space-between {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	@content;
+}
+
+//  --Input
+
+@mixin input($width: 400px, $bg: $base-bg, $font-color: $base-font) {
+	width: $width;
+	padding: math.div($padding-sm, 4) $padding-md;
+	border: none;
+	background: $bg;
+	font-family: $base-font-family;
+	font-size: 1.7rem;
+	color: $font-color;
+
+	&:focus {
+		outline: none;
+	}
+
+	&::placeholder {
+		opacity: 0.6;
+	}
+}
+
+//  --Button
+
+@mixin btn($bg: $color-primary, $font-color: $base-font) {
+	border: none;
+	background-color: $bg;
+	padding: math.div($padding-sm, 2) $padding-sm;
+	font-family: $base-font-family;
+	color: $font-color;
+	opacity: 0.6;
+	cursor: pointer;
+
+	&:hover {
+		opacity: 1;
+	}
+
+	&:focus {
+		outline: none;
+	}
+}
