@@ -46,6 +46,9 @@ $box-shadow-5: 0 0 5px 1px hsl(0, 0%, 100%, 0.1);
 
 //  --Border
 
+$border-primary: 1px solid $color-primary;
+$border-secondary: 1px solid $color-secondary;
+
 $border-radius-sm: 10px;
 $border-radius-md: 20px;
 $border-radius-lg: 30px;
@@ -53,6 +56,12 @@ $border-radius-lg: 30px;
 //  --Outline
 
 $base-outline: 1px solid $color-secondary;
+
+//  --Gap
+
+$gap-sm: 1rem;
+$gap-md: 2rem;
+$gap-lg: 3rem;
 
 // Mixins
 
@@ -101,5 +110,27 @@ $base-outline: 1px solid $color-secondary;
 
 	&:focus {
 		outline: none;
+	}
+}
+
+@mixin img {
+	inline-size: 100%;
+	aspect-ratio: 16 / 14;
+	object-fit: cover;
+
+	@content;
+}
+
+@mixin link($font-color: $base-font, $font-size: 1.3rem) {
+	text-decoration: none;
+	color: $font-color;
+	font-size: $font-size;
+	transition: 0.2s color ease;
+
+	@content;
+
+	&:hover {
+		color: $color-primary-light;
+		font-weight: bold;
 	}
 }

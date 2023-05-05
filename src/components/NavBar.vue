@@ -15,9 +15,9 @@
 
 <template>
 	<nav class="nav">
-		<h2>Anime List</h2>
+		<h2>AnimeList</h2>
 		<section class="nav__search">
-			<div class="nav-search__input-container">
+			<form class="nav-search__input-form" @submit.prevent="emitSearch">
 				<input
 					type="text"
 					placeholder="Search..."
@@ -25,10 +25,8 @@
 					:value="title"
 					@input="updateTitle"
 				/>
-				<button @click="emitSearch" class="nav-search__btn">
-					Search
-				</button>
-			</div>
+				<button class="nav-search__btn">Search</button>
+			</form>
 		</section>
 	</nav>
 </template>
@@ -37,11 +35,11 @@
 	.nav {
 		@include flex-space-between;
 		padding: $padding-md $padding-md;
-		background-color: $base-bg-light;
+		// background-color: $base-bg-light;
 
 		.nav__search {
 			flex: 1;
-			.nav-search__input-container {
+			.nav-search__input-form {
 				width: fit-content;
 				margin-left: auto;
 				display: flex;
