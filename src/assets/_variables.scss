@@ -65,6 +65,18 @@ $gap-lg: 3rem;
 
 // Mixins
 
+//  --Container
+
+@mixin container {
+	width: min(1024px, 100%);
+	min-height: 100vh;
+	margin: 0 $margin-auto;
+
+	@content;
+}
+
+//  --Flex-space-between
+
 @mixin flex-space-between {
 	display: flex;
 	justify-content: space-between;

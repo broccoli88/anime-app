@@ -5,7 +5,9 @@
 	const emit = defineEmits(["update:title", "search"]);
 
 	const updateTitle = (e) => {
+		if (!e.target.value) return;
 		emit("update:title", e.target.value);
+		e.target.value = "";
 	};
 
 	const emitSearch = () => {
@@ -23,7 +25,7 @@
 					placeholder="Search..."
 					class="nav-search__input"
 					:value="title"
-					@input="updateTitle"
+					@input.trim="updateTitle"
 				/>
 				<button class="nav-search__btn">Search</button>
 			</form>

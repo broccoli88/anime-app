@@ -21,7 +21,6 @@
 
 		await fetchData();
 		anime.value = response.value;
-		console.log(anime.value);
 	});
 </script>
 <template>
@@ -31,14 +30,20 @@
 				<figure class="anime__img">
 					<img :src="anime.image" alt="" />
 				</figure>
-
-				<h2 class="anime__title">{{ anime.title }}</h2>
-				<h3 class="anime__type">{{ anime.type }}</h3>
-				<span v-for="genre in anime.genres" :key="genre">
-					<p class="anime__genres">{{ genre }}</p>
-				</span>
+				<section class="anime__side-info-text">
+					<h2 class="anime__title">{{ anime.title }}</h2>
+					<p class="anime__type">Type: {{ anime.type }}</p>
+					<div>
+						<p>Genres:&nbsp;</p>
+						<span v-for="genre in anime.genres" :key="genre">
+							<p class="anime__genres">{{ genre }},</p>
+						</span>
+					</div>
+					<p>Episodes: {{ anime.episodes }}</p>
+				</section>
 			</div>
 			<div class="anime__main-info">
+				<h3>Synopsis</h3>
 				<p class="anime__synopsis">
 					{{ anime.synopsis }}
 				</p>
@@ -48,4 +53,52 @@
 	<div class="fallback" v-else>Loading...</div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+	.anime__side-info {
+		display: grid;
+		grid-auto-flow: column;
+		gap: $gap-lg;
+		margin-bottom: $margin-lg;
+
+		.anime__img {
+			max-width: 250px;
+
+			& > img {
+				width: 100%;
+				object-fit: cover;
+			}
+		}
+
+		.anime__side-info-text {
+			// display: grid;
+
+			h2 {
+				margin-bottom: $margin-lg;
+			}
+
+			p {
+				margin-bottom: $margin-sm;
+			}
+
+			& div:nth-child(3) {
+				display: flex;
+			}
+		}
+	}
+
+	.anime__main-info {
+		padding: $padding-lg $padding-md;
+		border: $border-primary;
+		border-radius: $border-radius-md;
+
+		h3 {
+			margin-bottom: $margin-md;
+		}
+
+		p {
+			font-size: 1.8rem;
+			line-height: 1.5;
+			letter-spacing: 1px;
+		}
+	}
+</style>
