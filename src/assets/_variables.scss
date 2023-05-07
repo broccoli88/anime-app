@@ -2,9 +2,9 @@
 
 $color-primary: hsl(178, 93%, 29%);
 $color-primary-light: hsl(171, 78%, 69%);
-$color-secondary-darker: hsl(281, 78%, 23%);
+$color-secondary-dark: hsl(281, 78%, 23%);
 $color-secondary: hsl(280, 55%, 44%);
-$color-secondary-lighter: hsl(266, 79%, 81%);
+$color-secondary-light: hsl(266, 79%, 81%);
 
 // Font
 $base-font: hsl(0, 0%, 90%);
@@ -44,6 +44,9 @@ $box-shadow-15: 0 0 15px 1px hsl(0, 0%, 100%, 0.1);
 $box-shadow-10: 0 0 10px 1px hsl(0, 0%, 100%, 0.1);
 $box-shadow-5: 0 0 5px 1px hsl(0, 0%, 100%, 0.1);
 
+$box-shadow-dark-15: 0 0 15px 1px hsl(0, 0%, 0%, 0.3);
+$box-shadow-dark-10: 0 0 10px 1px hsl(0, 0%, 0%, 0.3);
+$box-shadow-dark-5: 0 0 5px 1px hsl(0, 0%, 0%, 0.3);
 //  --Border
 
 $border-primary: 1px solid $color-primary;
@@ -145,4 +148,14 @@ $gap-lg: 3rem;
 		color: $color-primary-light;
 		font-weight: bold;
 	}
+}
+
+@mixin mainView {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+
+	gap: $gap-sm;
+	padding: $padding-md;
+
+	@content;
 }

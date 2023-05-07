@@ -1,12 +1,14 @@
 <script setup>
 	import NavBar from "./components/NavBar.vue";
-	import { RouterView } from "vue-router";
-	import { provide, ref, reactive, watch } from "vue";
+	import { RouterView, useRouter } from "vue-router";
+	import { provide, ref } from "vue";
 
+	const router = useRouter();
 	const isFetching = ref(false);
 	const searchAnime = ref("");
 
 	const search = () => {
+		router.push("/search");
 		isFetching.value = true;
 		setTimeout(() => {
 			isFetching.value = false;

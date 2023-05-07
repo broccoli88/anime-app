@@ -1,3 +1,9 @@
+:root {
+	--box-shadow-dark-15: 0 0 15px 1px hsl(0, 0%, 0%, 0.3);
+	--base-font: hsl(0, 0%, 90%);
+	--color-primary-light: hsl(171, 78%, 69%);
+}
+
 *,
 *::before,
 *::after {
@@ -46,4 +52,8 @@ h3 {
 
 a {
 	@include link;
+}
+
+ul {
+	list-style: none;
 }

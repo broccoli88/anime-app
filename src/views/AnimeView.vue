@@ -4,7 +4,6 @@
 	import { ref, onMounted } from "vue";
 	const anime = ref();
 	const route = useRoute();
-	const animeId = parseInt(route.params.id);
 
 	onMounted(async () => {
 		const url = `https://anime-db.p.rapidapi.com/anime/by-id/${route.params.id}`;
@@ -40,6 +39,7 @@
 						</span>
 					</div>
 					<p>Episodes: {{ anime.episodes }}</p>
+					<p>Status: {{ anime.status }}</p>
 				</section>
 			</div>
 			<div class="anime__main-info">

@@ -1,14 +1,15 @@
 <script setup>
-	import useFetch from "../composables/useFetch";
 	import AnimeCard from "../components/AnimeCard.vue";
-	import { reactive, onMounted } from "vue";
+	import useFetch from "../composables/useFetch";
+	import { useRoute } from "vue-router";
+	import { ref, reactive, onMounted } from "vue";
 
-	const animeRanking = reactive({ list: [] });
+	const route = useRoute();
+	const animeGenre = route.params.genre;
+	const animeList = reactive({ list: [] });
 
 	onMounted(async () => {
-		const url =
-			"https://anime-db.p.rapidapi.com/anime?page=1&size=10&sortBy=ranking";
-
+		const url = `https://anime-db.p.rapidapi.com/anime?page=1&size=10&genres=${animeGenre}`;
 		const options = {
 			method: "GET",
 			headers: {
@@ -19,24 +20,23 @@
 		};
 
 		const { response, fetchData } = useFetch(url, options);
-
 		await fetchData();
-		animeRanking.list = response.value.data;
+		animeList.list = response.value.data;
+		// console.log(response.value.data, animeGenre);
 	});
 </script>
 <template>
 	<section
 		class="main-view"
-		v-if="animeRanking.list.length > 0 && animeRanking.list !== null"
+		v-if="animeList.list.length > 0 && animeList.list !== null"
 	>
-		<h1>Anime Ranking top 10:</h1>
+		<h1>Genre: {{ animeGenre }}</h1>
 		<AnimeCard
-			v-for="anime in animeRanking.list"
+			v-for="anime in animeList.list"
 			:key="anime._id"
 			:anime="anime"
 		/>
 	</section>
-	<p v-else>Loading...</p>
 </template>
 
 <style lang="scss" scoped>
