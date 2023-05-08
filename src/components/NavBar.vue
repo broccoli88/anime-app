@@ -216,7 +216,7 @@
 						auto-fit,
 						minmax(min(100px, 100%), 1fr)
 					);
-					gap: $gap-sm;
+					gap: $gap-md;
 
 					padding: 0 $padding-lg;
 					background-color: $base-bg;
