@@ -2,9 +2,10 @@
 	import AnimeCard from "../components/AnimeCard.vue";
 	import useFetch from "../composables/useFetch";
 	import { useRoute } from "vue-router";
-	import { ref, reactive, onMounted } from "vue";
+	import { ref, reactive, onMounted, watchEffect } from "vue";
 
 	const route = useRoute();
+	const previousPath = route.fullPath;
 	const animeGenre = route.params.genre;
 	const animeList = reactive({ list: [] });
 
@@ -22,7 +23,6 @@
 		const { response, fetchData } = useFetch(url, options);
 		await fetchData();
 		animeList.list = response.value.data;
-		// console.log(response.value.data, animeGenre);
 	});
 </script>
 <template>

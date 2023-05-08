@@ -1,9 +1,5 @@
 <script setup>
 	import { onMounted, ref, watchEffect } from "vue";
-	import { useRoute } from "vue-router";
-
-	const route = useRoute();
-	const previousPath = route.fullPath;
 
 	const props = defineProps({
 		title: String,
@@ -54,13 +50,6 @@
 
 	onMounted(() => {
 		genresList.value.style.top = nav.value.offsetHeight - 3 + "px";
-	});
-
-	watchEffect(() => {
-		const currentPath = route.fullPath;
-		if (previousPath !== currentPath) {
-			nav.value.classList.remove("unwrapped");
-		}
 	});
 
 	watchEffect(() => {
