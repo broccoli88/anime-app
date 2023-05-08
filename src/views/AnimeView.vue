@@ -56,12 +56,16 @@
 <style lang="scss" scoped>
 	.anime__side-info {
 		display: grid;
-		grid-auto-flow: column;
+
 		gap: $gap-lg;
 		margin-bottom: $margin-lg;
 
+		@include breakpoint(615px) {
+			grid-template-columns: auto 1fr;
+		}
 		.anime__img {
 			max-width: 250px;
+			margin-inline: $margin-auto;
 
 			& > img {
 				width: 100%;
@@ -70,8 +74,7 @@
 		}
 
 		.anime__side-info-text {
-			// display: grid;
-
+			padding: $padding-md;
 			h2 {
 				margin-bottom: $margin-lg;
 			}
@@ -88,15 +91,13 @@
 
 	.anime__main-info {
 		padding: $padding-lg $padding-md;
-		border: $border-primary;
 		border-radius: $border-radius-md;
 
 		h3 {
 			margin-bottom: $margin-md;
 		}
 
-		p {
-			font-size: 1.8rem;
+		.anime__synopsis {
 			line-height: 1.5;
 			letter-spacing: 1px;
 		}

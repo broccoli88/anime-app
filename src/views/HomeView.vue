@@ -31,9 +31,10 @@
 	>
 		<h1>Anime Ranking top 10:</h1>
 		<AnimeCard
-			v-for="anime in animeRanking.list"
+			v-for="(anime, index) in animeRanking.list"
 			:key="anime._id"
 			:anime="anime"
+			:index="index"
 		/>
 	</section>
 	<p v-else>Loading...</p>

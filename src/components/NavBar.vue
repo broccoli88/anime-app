@@ -53,6 +53,12 @@
 	});
 
 	watchEffect(() => {
+		window.addEventListener("resize", () => {
+			genresList.value.style.top = nav.value.offsetHeight - 3 + "px";
+		});
+	});
+
+	watchEffect(() => {
 		if (isGenreListToggled.value && genresList.value) {
 			nav.value.classList.add("unwrapped");
 		}
@@ -109,7 +115,19 @@
 					:value="title"
 					@input.trim="updateTitle"
 				/>
-				<button class="nav-search__btn">Search</button>
+				<button class="nav-search__btn">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						width="26"
+						height="26"
+						viewBox="0 0 24 24"
+					>
+						<path
+							fill="var(--base-font)"
+							d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5A6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5S14 7.01 14 9.5S11.99 14 9.5 14z"
+						/>
+					</svg>
+				</button>
 			</form>
 		</section>
 	</nav>
@@ -117,10 +135,11 @@
 
 <style lang="scss" scoped>
 	.nav {
-		@include flex-space-between;
-		padding: $padding-md $padding-md;
-		box-shadow: $box-shadow-dark-15;
-		position: relative;
+		@include grid {
+			padding: $padding-md $padding-md;
+			box-shadow: $box-shadow-dark-15;
+			position: relative;
+		}
 
 		&.unwrapped {
 			box-shadow: none;
@@ -145,18 +164,25 @@
 		}
 
 		.nav__navigation {
-			display: grid;
-			grid-auto-flow: column;
+			flex: 1;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			order: 3;
 
 			gap: $gap-lg;
 
+			@include breakpoint(853px) {
+				order: initial;
+			}
+
 			& > * {
-				font-size: 1.8rem;
 				padding-inline: $padding-sm;
 			}
 			.genres {
 				div {
 					display: flex;
+					align-items: center;
 					gap: 0.6rem;
 					cursor: pointer;
 
@@ -187,22 +213,29 @@
 
 					display: grid;
 					grid-template-columns: repeat(
-						5,
+						auto-fit,
 						minmax(min(100px, 100%), 1fr)
 					);
 					gap: $gap-sm;
 
 					padding: 0 $padding-lg;
 					background-color: $base-bg;
-					// box-shadow: $box-shadow-dark-15;
-					box-shadow: inset 0 -6px 5px hsl(0, 0%, 0%, 0.2);
+					box-shadow: 0 11px 10px hsl(0, 0%, 0%, 0.2);
 					transition: all 0.4s ease;
+
+					@include tablet {
+						grid-template-columns: repeat(
+							5,
+							minmax(min(100px, 100%), 1fr)
+						);
+					}
 				}
 			}
 		}
 		.nav__search {
+			width: min(400px, 100%);
+
 			.nav-search__input-form {
-				width: fit-content;
 				display: flex;
 				box-shadow: $box-shadow-5;
 				border-radius: $border-radius-sm;
@@ -219,6 +252,7 @@
 				.nav-search__btn {
 					@include btn;
 					border-radius: 0 $border-radius-sm $border-radius-sm 0;
+					display: grid;
 				}
 			}
 		}

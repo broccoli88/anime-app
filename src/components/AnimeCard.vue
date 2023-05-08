@@ -1,7 +1,7 @@
 <script setup>
 	import { RouterLink } from "vue-router";
 
-	const props = defineProps(["anime"]);
+	const props = defineProps(["anime", "index"]);
 </script>
 <template>
 	<router-link :to="`/anime/${anime._id}`" class="anime-container">
@@ -9,9 +9,7 @@
 			<img :src="anime.image" alt="" />
 		</figure>
 
-		<p class="anime__title">
-			{{ anime.title }}
-		</p>
+		<p class="anime__title">{{ index + 1 + "." }} {{ anime.title }}</p>
 	</router-link>
 </template>
 
