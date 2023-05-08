@@ -43,9 +43,10 @@
 	>
 		<h1>Search results for: {{ searchAnime }}</h1>
 		<AnimeCard
-			v-for="anime in animeList.list"
+			v-for="(anime, index) in animeList.list"
 			:key="anime._id"
 			:anime="anime"
+			:index="index"
 		/>
 	</section>
 	<p v-else>Loading...</p>
