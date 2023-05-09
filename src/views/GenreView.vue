@@ -2,14 +2,15 @@
 	import AnimeCard from "../components/AnimeCard.vue";
 	import useFetch from "../composables/useFetch";
 	import { useRoute } from "vue-router";
-	import { ref, reactive, onMounted, watchEffect } from "vue";
+	import { ref, reactive, onMounted, watch, onUpdated } from "vue";
 
 	const route = useRoute();
 	const previousPath = route.fullPath;
 	const animeGenre = route.params.genre;
 	const animeList = reactive({ list: [] });
 
-	onMounted(async () => {
+	const fetchAnime = async () => {
+		// animeList.list = [] <== try it that way and here
 		const url = `https://anime-db.p.rapidapi.com/anime?page=1&size=10&genres=${animeGenre}`;
 		const options = {
 			method: "GET",
@@ -23,6 +24,16 @@
 		const { response, fetchData } = useFetch(url, options);
 		await fetchData();
 		animeList.list = response.value.data;
+	};
+
+	onMounted(() => {
+		fetchAnime();
+	});
+
+	onUpdated(() => {
+		// find a way to update component to render new list
+		// clearing animeList.list = [] doesnt work
+		// fetchAnime();
 	});
 </script>
 <template>
