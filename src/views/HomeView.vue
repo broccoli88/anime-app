@@ -1,6 +1,7 @@
 <script setup>
 	import useFetch from "../composables/useFetch";
 	import AnimeCard from "../components/AnimeCard.vue";
+	import Loader from "../components/Loader.vue";
 	import { reactive, onMounted } from "vue";
 
 	const animeRanking = reactive({ list: [] });
@@ -37,12 +38,13 @@
 			:index="index"
 		/>
 	</section>
-	<p v-else>Loading...</p>
+	<Loader v-else></Loader>
 </template>
 
 <style lang="scss" scoped>
 	.main-view {
-		@include mainView;
+		@include mainView {
+		}
 
 		h1 {
 			display: block;

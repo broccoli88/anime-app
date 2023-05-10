@@ -1,6 +1,7 @@
 <script setup>
 	import useFetch from "../composables/useFetch";
 	import AnimeCard from "../components/AnimeCard.vue";
+	import Loader from "../components/Loader.vue";
 	import { reactive, ref, watch, inject, onMounted } from "vue";
 
 	const animeList = reactive({ list: [] });
@@ -49,7 +50,7 @@
 			:index="index"
 		/>
 	</section>
-	<p v-else>Loading...</p>
+	<Loader v-else></Loader>
 </template>
 
 <style lang="scss" scoped>

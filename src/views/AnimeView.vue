@@ -1,4 +1,5 @@
 <script setup>
+	import Loader from "../components/Loader.vue";
 	import useFetch from "../composables/useFetch";
 	import { useRoute } from "vue-router";
 	import { ref, onMounted } from "vue";
@@ -50,7 +51,7 @@
 			</div>
 		</article>
 	</section>
-	<div class="fallback" v-else>Loading...</div>
+	<Loader v-else></Loader>
 </template>
 
 <style lang="scss" scoped>

@@ -1,10 +1,12 @@
 <script setup>
-	import { onMounted, ref, watchEffect } from "vue";
+	import { useRoute } from "vue-router";
+	import { onMounted, ref, watchEffect, watch } from "vue";
 
 	const props = defineProps({
 		title: String,
 	});
 	const emit = defineEmits(["update:title", "search"]);
+	const route = useRoute();
 
 	const updateTitle = (e) => {
 		if (!e.target.value) return;
@@ -68,6 +70,13 @@
 		}
 		if (!genresList.value) return;
 	});
+
+	watch(
+		() => route.params,
+		() => {
+			isGenreListToggled.value = false;
+		}
+	);
 </script>
 
 <template>
