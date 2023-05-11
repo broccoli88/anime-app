@@ -170,6 +170,8 @@ $breakpoints: (
 	}
 }
 
+// --Img
+
 @mixin img {
 	inline-size: 100%;
 	aspect-ratio: 16 / 14;
@@ -177,6 +179,8 @@ $breakpoints: (
 
 	@content;
 }
+
+// --Link
 
 @mixin link($font-color: $base-font, $font-size: 1.3rem) {
 	text-decoration: none;
@@ -186,8 +190,8 @@ $breakpoints: (
 
 	@content;
 
-	&:hover {
-		color: $color-primary-light;
-		font-weight: bold;
-	}
+	// &:hover {
+	// 	color: $color-primary-light;
+	// 	font-weight: bold;
+	// }
 }

@@ -83,7 +83,7 @@
 	<nav class="nav" ref="nav">
 		<h2>AnimeList</h2>
 		<article class="nav__navigation">
-			<router-link to="/" class="home">Home</router-link>
+			<router-link to="/" class="navigation__link">Home</router-link>
 			<section class="genres">
 				<div @click="toggleGenreList">
 					<p class="genres__heading">Genres</p>
@@ -114,6 +114,9 @@
 					</li>
 				</ul>
 			</section>
+			<router-link class="navigation__link" to="/saved-anime-list"
+				>Saved Anime</router-link
+			>
 		</article>
 		<section class="nav__search">
 			<form class="nav-search__input-form" @submit.prevent="emitSearch">
@@ -188,6 +191,12 @@
 			& > * {
 				padding-inline: $padding-sm;
 			}
+
+			.navigation__link {
+				&:hover {
+					color: $color-primary-light;
+				}
+			}
 			.genres {
 				div {
 					display: flex;
@@ -203,7 +212,6 @@
 
 					&:hover .genres__heading {
 						color: $color-primary-light;
-						font-weight: bold;
 					}
 
 					&:hover .arrow path {
