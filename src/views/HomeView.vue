@@ -24,14 +24,6 @@
 		await fetchData();
 		animeRanking.list = response.value.data;
 	});
-
-	function onEnter(el, done) {
-		gsap.to(el, {
-			opacity: 1,
-			delay: el.dataset.index * 0.15,
-			onComplete: done,
-		});
-	}
 </script>
 <template>
 	<section
