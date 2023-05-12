@@ -1,10 +1,12 @@
 <script setup>
 	import { RouterLink } from "vue-router";
-	import { ref } from "vue";
+	import { ref, onMounted } from "vue";
 	import state from "../store/store";
 
 	const props = defineProps(["anime", "index"]);
 	const emits = defineEmits(["save-anime"]);
+
+	const isSaved = ref(false);
 
 	const saveAnime = () => {
 		const anime = {
@@ -18,13 +20,47 @@
 			id: props.anime._id,
 		};
 
+		if (
+			state.savedAnimeList.some((a) => {
+				return a.id === anime.id;
+			})
+		)
+			return;
+
 		state.savedAnimeList.push(anime);
+
+		isSaved.value = true;
 	};
+
+	const removeAnime = () => {
+		state.savedAnimeList = state.savedAnimeList.filter((a) => {
+			return a.id !== props.anime._id;
+		});
+
+		isSaved.value = false;
+	};
+
+	onMounted(async () => {
+		if (state.savedAnimeList.some((a) => a.id === props.anime._id)) {
+			isSaved.value = true;
+		}
+	});
 </script>
 <template>
 	<div class="anime-container">
-		<figure class="add" @click.stop="saveAnime">
-			<img src="@/assets/images/add.svg" alt="" />
+		<figure class="add">
+			<img
+				src="@/assets/images/add.svg"
+				alt=""
+				v-if="!isSaved"
+				@click.stop="saveAnime"
+			/>
+			<img
+				src="@/assets/images/subtract.svg"
+				alt=""
+				@click.stop="removeAnime"
+				v-else
+			/>
 		</figure>
 		<router-link :to="`/anime/${anime._id}`" class="anime__link">
 			<figure class="anime__img">

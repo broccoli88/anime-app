@@ -109,6 +109,9 @@
 						<router-link
 							:to="`/genres/${genre}`"
 							class="genres__link"
+							:class="
+								genre === route.params.genre ? 'active' : ''
+							"
 							>{{ genre }}</router-link
 						>
 					</li>
@@ -245,6 +248,15 @@
 							5,
 							minmax(min(100px, 100%), 1fr)
 						);
+					}
+
+					.genres__link {
+						&:hover {
+							color: $color-primary-light;
+						}
+					}
+					.active {
+						color: $color-primary-light;
 					}
 				}
 			}

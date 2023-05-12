@@ -36,8 +36,6 @@
 			const { response, fetchData } = useFetch(url, options);
 			await fetchData();
 			animeList.list = response.value.data;
-			console.log("loaded");
-			console.log(animeList.list);
 		}
 	);
 </script>
