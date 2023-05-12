@@ -14,8 +14,8 @@
 			genre: [...props.anime.genres],
 			type: props.anime.type,
 			img: props.anime.image,
-			ranking: props.anime.ranking,
-			synopsis: props.anime.synopsis,
+			// ranking: props.anime.ranking,
+			// synopsis: props.anime.synopsis,
 			status: props.anime.status,
 			id: props.anime._id,
 		};
@@ -28,6 +28,7 @@
 			return;
 
 		state.savedAnimeList.push(anime);
+		console.log(state.savedAnimeList);
 
 		isSaved.value = true;
 	};

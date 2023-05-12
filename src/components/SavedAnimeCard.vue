@@ -15,8 +15,9 @@
 			<img class="saved__img" :src="anime.img" alt="" />
 
 			<div class="saved__description">
-				<p class="saved__title">{{ anime.title }}</p>
-				<p class="saved__type">{{ anime.type }}</p>
+				<p>{{ anime.title }}</p>
+				<p>{{ anime.type }}</p>
+				<p>{{ anime.status }}</p>
 				<span class="saved__genre">
 					<p v-for="genre in anime.genre" :key="genre">
 						{{ genre }},
@@ -71,6 +72,10 @@
 				gap: $gap-sm;
 				flex: 1;
 
+				&:first-child {
+					word-wrap: break-word;
+				}
+
 				@include breakpoint(600px) {
 					flex-direction: row;
 					justify-content: space-between;
@@ -94,20 +99,4 @@
 			right: -12px;
 		}
 	}
-
-	// 	.saved__link {
-	// 		display: flex;
-	// 		align-items: center;
-	// 		justify-content: space-between;
-
-	// 		padding: $padding-sm $padding-md;
-	// 		.saved__img {
-	// 			img {
-	// 				height: calc(100px - 2rem);
-	// 				object-fit: cover;
-	// 			}
-	// 		}
-
-	// 	}
-	// }
 </style>

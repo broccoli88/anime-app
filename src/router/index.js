@@ -4,6 +4,7 @@ import AnimeView from "../views/AnimeView.vue";
 import GenreView from "../views/GenreView.vue";
 import SearchView from "../views/SearchView.vue";
 import SavedAnimeListView from "../views/SavedAnimeListView.vue";
+import Page404View from "../views/Page404View.vue";
 
 const router = createRouter({
 	history: createWebHistory(import.meta.env.BASE_URL),
@@ -32,6 +33,11 @@ const router = createRouter({
 			path: "/saved-anime-list",
 			name: "saved-anime-list",
 			component: SavedAnimeListView,
+		},
+		{
+			path: "/:pathMatch(.*)*",
+			name: "NotFound",
+			component: Page404View,
 		},
 	],
 });

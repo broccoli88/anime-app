@@ -24,6 +24,14 @@
 		await fetchData();
 		animeRanking.list = response.value.data;
 	});
+
+	function onEnter(el, done) {
+		gsap.to(el, {
+			opacity: 1,
+			delay: el.dataset.index * 0.15,
+			onComplete: done,
+		});
+	}
 </script>
 <template>
 	<section
@@ -31,11 +39,13 @@
 		v-if="animeRanking.list.length > 0 && animeRanking.list !== null"
 	>
 		<h1>Anime Ranking top 10:</h1>
+
 		<AnimeCard
 			v-for="(anime, index) in animeRanking.list"
 			:key="anime._id"
 			:anime="anime"
 			:index="index"
+			:data-index="index"
 		/>
 	</section>
 	<Loader v-else></Loader>

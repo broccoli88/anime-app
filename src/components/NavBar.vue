@@ -81,7 +81,9 @@
 
 <template>
 	<nav class="nav" ref="nav">
-		<h2>AnimeList</h2>
+		<router-link to="/">
+			<h2>AnimeList</h2>
+		</router-link>
 		<article class="nav__navigation">
 			<router-link to="/" class="navigation__link">Home</router-link>
 			<section class="genres">

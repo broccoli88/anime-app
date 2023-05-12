@@ -17,7 +17,7 @@
 		<h1>Saved Anime List</h1>
 
 		<div>
-			<ul class="saved-anime-list">
+			<TransitionGroup tag="ul" name="fade" class="saved-anime-list">
 				<SavedAnimeCard
 					@remove-anime="removeAnime"
 					v-for="(anime, index) in savedAnimeList"
@@ -25,7 +25,7 @@
 					:anime="anime"
 					:index="index"
 				/>
-			</ul>
+			</TransitionGroup>
 		</div>
 	</div>
 </template>
@@ -37,7 +37,20 @@
 	.saved-anime-list {
 		display: grid;
 		grid-auto-flow: row;
-		// grid-auto-rows: auto;
 		gap: $gap-md;
+	}
+
+	.fade-leave-to {
+		opacity: 0;
+		transform: translateX(-100px);
+	}
+
+	.fade-move,
+	.fade-leave-active {
+		transition: 0.4s all ease;
+	}
+
+	.fade-leave-active {
+		position: absolute;
 	}
 </style>
