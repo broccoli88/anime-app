@@ -87,6 +87,10 @@
 			& div:nth-child(3) {
 				display: flex;
 			}
+
+			.anime__genres {
+				padding-right: 3px;
+			}
 		}
 	}
 

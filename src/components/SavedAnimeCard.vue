@@ -12,14 +12,17 @@
 			<img src="@/assets/images/subtract.svg" alt="" />
 		</figure>
 		<router-link class="saved__link" :to="`/anime/${anime.id}`">
-			<figure class="saved__img">
-				<img :src="anime.img" alt="" />
-			</figure>
-			<p class="saved__title">{{ anime.title }}</p>
-			<p class="saved__type">{{ anime.type }}</p>
-			<span class="saved__genre">
-				<p v-for="genre in anime.genre" :key="genre">{{ genre }},</p>
-			</span>
+			<img class="saved__img" :src="anime.img" alt="" />
+
+			<div class="saved__description">
+				<p class="saved__title">{{ anime.title }}</p>
+				<p class="saved__type">{{ anime.type }}</p>
+				<span class="saved__genre">
+					<p v-for="genre in anime.genre" :key="genre">
+						{{ genre }},
+					</p>
+				</span>
+			</div>
 		</router-link>
 	</li>
 </template>
@@ -34,11 +37,51 @@
 		transition: scale 0.3s ease;
 
 		& > * {
-			font-size: 1.5rem;
+			font-size: 1.2rem;
 		}
 
-		&:hover {
-			scale: 1.02;
+		@include breakpoint(600px) {
+			& > * {
+				font-size: 1.5rem;
+			}
+			&:hover {
+				scale: 1.02;
+			}
+		}
+
+		.saved__link {
+			display: flex;
+			padding: $padding-sm;
+
+			@include breakpoint(600px) {
+				align-items: center;
+
+				padding: $padding-sm $padding-md;
+			}
+
+			.saved__img {
+				height: 100px;
+				object-fit: cover;
+			}
+
+			.saved__description {
+				margin-left: $margin-md;
+				display: flex;
+				flex-direction: column;
+				gap: $gap-sm;
+				flex: 1;
+
+				@include breakpoint(600px) {
+					flex-direction: row;
+					justify-content: space-between;
+				}
+
+				.saved__genre {
+					display: flex;
+					flex-wrap: wrap;
+					gap: 3px;
+				}
+			}
 		}
 
 		.subtract {
@@ -50,23 +93,21 @@
 			top: -12px;
 			right: -12px;
 		}
-		.saved__link {
-			display: flex;
-			align-items: center;
-			justify-content: space-between;
-
-			padding: $padding-sm $padding-md;
-			.saved__img {
-				img {
-					height: calc(100px - 2rem);
-					object-fit: cover;
-				}
-			}
-
-			.saved__genre {
-				display: flex;
-				gap: 3px;
-			}
-		}
 	}
+
+	// 	.saved__link {
+	// 		display: flex;
+	// 		align-items: center;
+	// 		justify-content: space-between;
+
+	// 		padding: $padding-sm $padding-md;
+	// 		.saved__img {
+	// 			img {
+	// 				height: calc(100px - 2rem);
+	// 				object-fit: cover;
+	// 			}
+	// 		}
+
+	// 	}
+	// }
 </style>

@@ -31,10 +31,13 @@
 </template>
 
 <style lang="scss" scoped>
+	h1 {
+		margin-bottom: 4rem;
+	}
 	.saved-anime-list {
 		display: grid;
 		grid-auto-flow: row;
-		grid-auto-rows: 100px;
+		// grid-auto-rows: auto;
 		gap: $gap-md;
 	}
 </style>

@@ -3,7 +3,7 @@
 	import useFetch from "../composables/useFetch";
 	import Loader from "../components/Loader.vue";
 	import { useRoute } from "vue-router";
-	import { ref, reactive, onMounted, watch } from "vue";
+	import { reactive, onMounted, watch } from "vue";
 
 	const route = useRoute();
 	const animeList = reactive({ list: [] });
