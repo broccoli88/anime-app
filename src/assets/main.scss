@@ -24,18 +24,15 @@ body {
 	color: $base-font;
 
 	background-color: $base-bg-light;
-
-	min-height: 100vh;
 }
 
 #app {
-	// width: min(100%, 1024px);
-	// min-height: 100vh;
-
 	margin-inline: $margin-auto;
+	min-height: 100vh;
 
-	box-shadow: $box-shadow-15;
 	background-color: $base-bg;
+	display: grid;
+	grid-template-rows: auto 1fr auto;
 }
 
 h1 {

@@ -95,8 +95,8 @@
 			aspect-ratio: 1;
 
 			position: absolute;
-			bottom: 0.5rem;
-			right: 1rem;
+			bottom: -0.2rem;
+			right: 0.2rem;
 		}
 	}
 
@@ -112,6 +112,7 @@
 
 		.anime__title {
 			word-wrap: break-word;
+			padding: $padding-sm 0;
 		}
 	}
 </style>

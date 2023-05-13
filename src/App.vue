@@ -1,12 +1,14 @@
 <script setup>
 	import NavBar from "./components/NavBar.vue";
+	import Footer from "./components/Footer.vue";
 	import { RouterView, useRouter, useRoute } from "vue-router";
-	import { provide, ref, watch } from "vue";
+	import { provide, ref, onMounted } from "vue";
 
 	const route = useRoute();
 	const router = useRouter();
 	const isFetching = ref(false);
 	const searchAnime = ref("");
+	const main = ref();
 
 	const search = () => {
 		router.push("/search");
@@ -29,7 +31,7 @@
 		<NavBar v-model:title="searchAnime" @search="search" />
 	</header>
 
-	<main>
+	<main ref="main">
 		<div class="backwards" @click="backward" v-if="route.fullPath !== '/'">
 			<img src="./assets/images/chevron.svg" alt="" />
 			<span>Go back</span>
@@ -40,6 +42,7 @@
 			</transition>
 		</RouterView>
 	</main>
+	<Footer />
 </template>
 
 <style lang="scss" scoped>
@@ -59,9 +62,11 @@
 
 			display: flex;
 			align-items: center;
+			justify-content: center;
 			gap: $gap-sm;
 
 			span {
+				padding: $padding-sm;
 				text-orientation: upright;
 				writing-mode: vertical-rl;
 				text-transform: uppercase;
@@ -106,15 +111,19 @@
 
 	.fade-enter-from {
 		opacity: 0;
-		transform: translateX(400px);
+		transform: translateX(100px);
 	}
 	.fade-leave-to {
 		opacity: 0;
-		transform: translateX(-400px);
+		transform: translateX(-100px);
 	}
 
 	.fade-enter-active,
 	.fade-leave-active {
 		transition: 0.4s all ease-out;
+	}
+
+	.fade-leave-active {
+		position: absolute;
 	}
 </style>
