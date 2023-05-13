@@ -6,24 +6,24 @@
 
 	const animeRanking = reactive({ list: [] });
 
-	// onMounted(async () => {
-	// 	const url =
-	// 		"https://anime-db.p.rapidapi.com/anime?page=1&size=10&sortBy=ranking";
+	onMounted(async () => {
+		const url =
+			"https://anime-db.p.rapidapi.com/anime?page=1&size=10&sortBy=ranking";
 
-	// 	const options = {
-	// 		method: "GET",
-	// 		headers: {
-	// 			"X-RapidAPI-Key":
-	// 				"c711947e3amsh0c697f08f7842e1p1f50d7jsndcb62addaea8",
-	// 			"X-RapidAPI-Host": "anime-db.p.rapidapi.com",
-	// 		},
-	// 	};
+		const options = {
+			method: "GET",
+			headers: {
+				"X-RapidAPI-Key":
+					"c711947e3amsh0c697f08f7842e1p1f50d7jsndcb62addaea8",
+				"X-RapidAPI-Host": "anime-db.p.rapidapi.com",
+			},
+		};
 
-	// 	const { response, fetchData } = useFetch(url, options);
+		const { response, fetchData } = useFetch(url, options);
 
-	// 	await fetchData();
-	// 	animeRanking.list = response.value.data;
-	// });
+		await fetchData();
+		animeRanking.list = response.value.data;
+	});
 </script>
 <template>
 	<section
